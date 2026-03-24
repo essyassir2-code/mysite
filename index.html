@@ -44,6 +44,7 @@ body {
     color: red;
 }
 
+/* Button */
 .btn {
     padding: 15px 40px;
     background: red;
@@ -53,10 +54,12 @@ body {
     font-size: 18px;
     cursor: pointer;
     box-shadow: 0 0 20px red;
+    transition: 0.3s;
 }
 
 .btn:hover {
-    box-shadow: 0 0 40px red;
+    transform: scale(1.1);
+    box-shadow: 0 0 50px red;
 }
 
 /* Gallery */
@@ -75,9 +78,15 @@ body {
     width: 250px;
     border-radius: 15px;
     border: 2px solid red;
+    transition: 0.3s;
 }
 
-/* VIP Cards */
+.images img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px red;
+}
+
+/* Cards */
 .cards {
     display: flex;
     justify-content: center;
@@ -91,16 +100,40 @@ body {
     border-radius: 20px;
     border: 2px solid red;
     text-align: center;
-    width: 200px;
+    width: 220px;
     box-shadow: 0 0 20px red;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px red;
 }
 
 .card h2 {
     color: red;
 }
 
-</style>
+/* Popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1a0000;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid red;
+    box-shadow: 0 0 40px red;
+    width: 300px;
+}
 
+.popup button {
+    margin-top: 10px;
+}
+
+</style>
 </head>
 
 <body>
@@ -110,20 +143,20 @@ body {
     <div class="nav">
         <a href="#">Home</a>
         <a href="#">Server</a>
-        <a href="#">Rules</a>
+        <a href="#" onclick="openPopup()">Rules</a>
         <a href="#">VIP</a>
         <a href="#">Gallery</a>
     </div>
 </div>
 
 <div class="hero">
-    <h1>WELCOME TO GLORIA 🔥</h1>
+    <h1>🔥 GLORIA ROLEPLAY</h1>
     <p>Where legends are made</p>
     <button class="btn">Become Legend</button>
 </div>
 
 <div class="gallery">
-    <h2>Gallery</h2>
+    <h2>📷 Gallery</h2>
     <div class="images">
         <img src="https://picsum.photos/300">
         <img src="https://picsum.photos/301">
@@ -135,21 +168,40 @@ body {
     <div class="card">
         <h2>$9.99</h2>
         <p>Basic VIP</p>
-        <button class="btn">Buy</button>
+        <button class="btn">Purchase</button>
     </div>
 
     <div class="card">
         <h2>$24.99</h2>
         <p>Pro VIP</p>
-        <button class="btn">Buy</button>
+        <button class="btn">Purchase</button>
     </div>
 
     <div class="card">
         <h2>$49.99</h2>
         <p>Legend VIP</p>
-        <button class="btn">Buy</button>
+        <button class="btn">Purchase</button>
     </div>
 </div>
+
+<!-- Popup Rules -->
+<div id="popup" class="popup">
+    <h2>📜 Rules</h2>
+    <p>1. Respect all players</p>
+    <p>2. No cheating</p>
+    <p>3. Roleplay seriously</p>
+    <button class="btn" onclick="closePopup()">Close</button>
+</div>
+
+<script>
+function openPopup() {
+    document.getElementById("popup").style.display = "block";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+</script>
 
 </body>
 </html>
