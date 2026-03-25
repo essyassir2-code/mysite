@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GLORIA · red & black roleplay</title>
+    <title>Gloria RolePlay · red & black</title>
     <!-- Font Awesome 6 (free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -15,523 +15,697 @@
         }
 
         body {
-            background-color: #0b0000;
+            background-color: #0b0000; /* deep black base */
             color: #f0e6e6;
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
-
-        /* custom red/black theme */
-        :root {
-            --gloria-red: #e11b1b;
-            --gloria-red-dark: #a01010;
-            --gloria-black: #0a0000;
-            --gloria-soft-black: #1a0808;
-            --gloria-accent: #ff4d4d;
-            --gloria-glow: rgba(225, 27, 27, 0.6);
-            --gloria-text: #f0d6d6;
-        }
-
-        /* smooth scroll & selection */
-        html {
+            line-height: 1.6;
             scroll-behavior: smooth;
         }
-        ::selection {
-            background: var(--gloria-red);
-            color: #000;
+
+        /* rich red & black palette */
+        :root {
+            --gloria-red: #d42e2e;
+            --gloria-red-light: #e65a5a;
+            --gloria-red-dark: #a02020;
+            --gloria-black: #0f0000;
+            --gloria-black-light: #1f0a0a;
+            --gloria-glow: rgba(220, 40, 40, 0.7);
+            --gloria-text: #f3d9d9;
         }
 
-        /* ---- layout ---- */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        /* custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e0000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a52a2a;
+            border-radius: 8px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d42e2e;
         }
 
-        /* header – black & red gradient */
-        .header {
-            background: linear-gradient(145deg, #130101 0%, #2b0404 80%);
-            border-bottom: 3px solid var(--gloria-red);
-            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.2);
+        /* header & navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            background: rgba(7, 0, 0, 0.95);
+            backdrop-filter: blur(4px);
+            border-bottom: 2px solid var(--gloria-red);
+            box-shadow: 0 4px 30px rgba(200, 0, 0, 0.2);
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(4px);
         }
 
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1.2rem 0;
-        }
-
-        .logo h1 {
-            font-size: 2.8rem;
+        .logo {
+            font-size: 2.2rem;
             font-weight: 800;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            background: linear-gradient(45deg, #ffb3b3, #ff1a1a);
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #f33, #a00);
             -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 15px var(--gloria-glow);
-            margin-left: 0.5rem;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px #f003;
         }
         .logo span {
-            font-size: 1rem;
-            color: #cc9c9c;
-            letter-spacing: 4px;
-            display: block;
-            line-height: 1;
+            font-size: 1.2rem;
+            background: none;
+            -webkit-text-fill-color: #bbb;
+            letter-spacing: 1px;
         }
 
         .nav-links {
             display: flex;
-            gap: 2.8rem;
+            gap: 2.2rem;
         }
         .nav-links a {
-            color: #fad7d7;
+            color: #f0c0c0;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.2rem;
-            transition: 0.3s;
+            transition: 0.2s;
             border-bottom: 2px solid transparent;
             padding-bottom: 4px;
         }
         .nav-links a:hover {
             color: white;
             border-bottom-color: var(--gloria-red);
-            text-shadow: 0 0 8px red;
+            text-shadow: 0 0 8px #f33;
         }
 
-        /* hero section with stunning image */
+        /* HERO section — GLORIA main */
         .hero {
-            margin: 2rem 0 3rem;
-            border-radius: 32px;
-            overflow: hidden;
-            box-shadow: 0 25px 40px -8px #300000;
-            border: 1px solid #6b1a1a;
-            background: #1a0303;
-        }
-        .hero-image {
-            background-image: linear-gradient(127deg, rgba(0,0,0,0.7) 0%, rgba(100,0,0,0.3) 100%), 
-            url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop'); 
-            /* cyberpunk gaming ambience – dark with red/neon fits rp */
-            background-size: cover;
-            background-position: center 30%;
-            height: 70vh;
-            min-height: 500px;
+            min-height: 85vh;
+            background: radial-gradient(circle at 20% 30%, #2f0404 0%, #020000 80%);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
-        .hero-overlay h2 {
-            font-size: 5rem;
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--gloria-red);
+            filter: blur(150px);
+            opacity: 0.35;
+            top: 10%;
+            left: 20%;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: #b30000;
+            filter: blur(180px);
+            opacity: 0.25;
+            bottom: 0;
+            right: 10%;
+        }
+        .hero-content {
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+        .hero-content h1 {
+            font-size: 5.5rem;
             font-weight: 900;
-            text-transform: uppercase;
-            color: white;
-            text-shadow: 0 0 20px red, 0 0 40px #b30000;
-            letter-spacing: 12px;
+            color: #ffd9d9;
+            text-shadow: 0 0 25px #f33, 0 0 45px #a00;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
         }
-        .hero-overlay p {
-            font-size: 1.7rem;
-            color: #ffcbcb;
-            background: rgba(20, 0, 0, 0.6);
-            padding: 1rem 2.5rem;
-            border-radius: 60px;
-            backdrop-filter: blur(3px);
-            border: 1px solid var(--gloria-red);
+        .hero-content p {
+            font-size: 1.6rem;
+            color: #e0b6b6;
+            margin-bottom: 35px;
+            font-style: italic;
+            border-left: 4px solid var(--gloria-red);
+            padding-left: 20px;
             display: inline-block;
-            margin-top: 1rem;
+        }
+        .btn-gloria {
+            background: transparent;
+            border: 2px solid var(--gloria-red);
+            color: white;
+            padding: 16px 48px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 60px;
+            box-shadow: 0 0 20px #f33a;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .btn-gloria:hover {
+            background: var(--gloria-red);
+            box-shadow: 0 0 40px #f33, 0 0 80px #a00;
+            border-color: white;
+            transform: scale(1.05);
         }
 
         /* sections general */
-        section {
-            margin: 6rem 0;
+        .section {
+            padding: 80px 8%;
+            background: #0c0101;
+            border-top: 1px solid #3d1a1a;
+            border-bottom: 1px solid #3d1a1a;
         }
         .section-title {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 700;
+            margin-bottom: 60px;
+            text-align: center;
+            color: #f5d5d5;
             text-transform: uppercase;
-            border-left: 10px solid var(--gloria-red);
-            padding-left: 2rem;
-            margin-bottom: 3rem;
             letter-spacing: 3px;
-            color: #ffe2e2;
-            text-shadow: 0 0 5px #ff4d4d;
+            position: relative;
+        }
+        .section-title::after {
+            content: "";
+            width: 160px;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, #d42e2e, #a00, #d42e2e, transparent);
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+            box-shadow: 0 0 20px red;
         }
 
-        /* cards rules / vip */
-        .cards-grid {
+        /* info cards (about server, features) */
+        .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 35px;
+            margin-top: 30px;
         }
-
-        .rule-card, .vip-card {
-            background: radial-gradient(circle at 20% 30%, #2f0a0a, #0f0101);
-            border: 1px solid #8b1a1a;
-            border-radius: 40px;
-            padding: 2.2rem 1.8rem;
-            transition: transform 0.25s, box-shadow 0.4s;
-            box-shadow: 0 15px 25px -10px #1f0000;
-            backdrop-filter: blur(2px);
+        .info-card {
+            background: #1f0606;
+            border: 1px solid #962020;
+            border-radius: 32px;
+            padding: 40px 20px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+            box-shadow: 0 8px 0 #4f0f0f;
         }
-        .rule-card:hover, .vip-card:hover {
-            transform: translateY(-12px);
-            border-color: var(--gloria-red);
-            box-shadow: 0 25px 35px -8px #e60000;
+        .info-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 20px #300, 0 0 30px #f336;
+            border-color: #f33;
         }
-
-        .rule-icon, .vip-icon {
-            font-size: 3.5rem;
+        .info-card i {
+            font-size: 3.8rem;
             color: var(--gloria-red);
-            margin-bottom: 1.2rem;
-            text-shadow: 0 0 18px red;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 6px #f33);
         }
-
-        .rule-card h3, .vip-card h3 {
+        .info-card h3 {
             font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #ffbebe;
+            margin-bottom: 15px;
+            color: #ffbcbc;
         }
-
-        .rule-card p, .vip-card p {
-            color: #dbb2b2;
+        .info-card p {
+            color: #cbadad;
             font-size: 1.1rem;
         }
 
-        .vip-card .price {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: white;
-            background: #a80000;
-            display: inline-block;
-            padding: 0.3rem 1.5rem;
-            border-radius: 40px;
-            margin: 1.2rem 0 1rem;
-            border: 2px solid #ff8080;
-            letter-spacing: 2px;
+        /* RULES special panel (modal + summary) */
+        .rules-preview {
+            background: #120202;
+            border-radius: 50px;
+            padding: 40px;
+            border: 2px solid #a22;
+            box-shadow: inset 0 0 30px #2f0000, 0 20px 30px #200000;
+            max-width: 800px;
+            margin: 40px auto 0;
         }
-        .vip-feature-list {
+        .rules-preview ul {
+            columns: 2;
             list-style: none;
-            margin-top: 1rem;
+            padding: 20px;
         }
-        .vip-feature-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px dashed #6b2a2a;
+        .rules-preview li {
+            margin: 20px 0;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #f3c6c6;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 12px;
+            border-bottom: 1px dashed #802b2b;
+            padding-bottom: 8px;
         }
-        .vip-feature-list i {
-            color: var(--gloria-red);
-            width: 1.8rem;
-            text-align: center;
+        .rules-preview i {
+            color: #d42e2e;
+            font-size: 1.5rem;
+            width: 30px;
+        }
+        .open-rules-btn {
+            background: #a02020;
+            border: none;
+            color: white;
+            font-size: 1.4rem;
+            padding: 14px 35px;
+            border-radius: 60px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+            margin: 20px auto 0;
+            border: 2px solid #c55;
+        }
+        .open-rules-btn:hover {
+            background: #d42e2e;
+            box-shadow: 0 0 50px #f33;
+            border-color: white;
         }
 
-        /* gallery */
+        /* MODAL (rules) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: #1f0404;
+            border: 4px solid #a00;
+            border-radius: 50px;
+            max-width: 700px;
+            width: 90%;
+            padding: 40px;
+            box-shadow: 0 0 100px #f33;
+            animation: slideDown 0.4s;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .modal-content h2 {
+            font-size: 3rem;
+            color: #ffa0a0;
+            border-bottom: 3px solid red;
+            margin-bottom: 25px;
+        }
+        .modal-content ul {
+            list-style: none;
+        }
+        .modal-content li {
+            margin: 18px 0;
+            font-size: 1.3rem;
+            border-left: 6px solid #d42e2e;
+            padding-left: 20px;
+            color: #fad0d0;
+        }
+        .close-modal {
+            float: right;
+            font-size: 3rem;
+            font-weight: bold;
+            color: #a55;
+            cursor: pointer;
+            transition: 0.2s;
+            line-height: 1;
+        }
+        .close-modal:hover {
+            color: red;
+            text-shadow: 0 0 15px red;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-80px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* VIP cards */
+        .vip-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin: 50px 0;
+        }
+        .vip-card {
+            background: linear-gradient(145deg, #1f0303, #0e0000);
+            border: 2px solid #a22;
+            border-radius: 50px;
+            padding: 30px 20px;
+            width: 280px;
+            text-align: center;
+            transition: 0.25s;
+            box-shadow: 0 15px 0 #4f0b0b;
+        }
+        .vip-card:hover {
+            transform: scale(1.07);
+            border-color: #f66;
+            box-shadow: 0 0 40px #f33, 0 20px 0 #600;
+        }
+        .vip-card.popular {
+            border: 3px solid gold;
+            box-shadow: 0 0 40px gold, 0 15px 0 #a33;
+        }
+        .vip-card h3 {
+            font-size: 2.6rem;
+            color: #ff9f9f;
+            margin: 15px 0;
+        }
+        .vip-price {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: #b00;
+            display: inline-block;
+            padding: 5px 35px;
+            border-radius: 60px;
+            margin: 15px 0;
+            border: 3px solid white;
+            color: white;
+            text-shadow: 0 0 10px black;
+        }
+        .vip-features {
+            list-style: none;
+            margin: 25px 0;
+        }
+        .vip-features li {
+            padding: 8px 0;
+            font-size: 1.2rem;
+            border-bottom: 1px dotted #933;
+        }
+        .vip-features i {
+            color: #2ecc71;
+            margin-right: 10px;
+        }
+
+        .buy-btn {
+            background: #a22;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 60px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+            border: 2px solid #d44;
+        }
+        .buy-btn:hover {
+            background: #d42e2e;
+            box-shadow: 0 0 30px #f33;
+        }
+
+        /* GALLERY */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.8rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 30px;
         }
         .gallery-item {
-            border-radius: 30px;
+            border-radius: 40px;
             overflow: hidden;
-            border: 3px solid #3d0303;
-            transition: 0.4s ease;
-            aspect-ratio: 16 / 9;
-            box-shadow: 0 20px 30px #1e0101;
+            border: 4px solid #a22;
+            box-shadow: 0 20px 30px #1e0000;
+            transition: 0.3s;
+            height: 240px;
+            background: #3d0f0f;
         }
         .gallery-item:hover {
-            border-color: var(--gloria-red);
             transform: scale(1.02);
-            box-shadow: 0 0 30px #f00;
+            border-color: #f33;
+            box-shadow: 0 0 40px #f33;
         }
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
+            filter: brightness(0.9) saturate(1.3);
             transition: 0.3s;
-            filter: brightness(0.9);
         }
         .gallery-item:hover img {
-            filter: brightness(1.1) saturate(1.2);
-        }
-
-        /* CTA / purchase highlight */
-        .purchase-cta {
-            background: linear-gradient(130deg, #1e0101, #390505);
-            border-radius: 80px;
-            padding: 4rem 3rem;
-            border: 2px solid #b32222;
-            text-align: center;
-            margin: 5rem 0;
-            box-shadow: inset 0 0 30px #2f0000, 0 25px 40px black;
-        }
-        .purchase-cta h3 {
-            font-size: 3rem;
-            color: white;
-            text-transform: uppercase;
-            font-weight: 800;
-            text-shadow: 0 0 20px #ff5e5e;
-        }
-        .purchase-cta .btn {
-            background: #b11c1c;
-            border: none;
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-            padding: 1.2rem 3.8rem;
-            margin-top: 2rem;
-            border-radius: 70px;
-            cursor: pointer;
-            transition: 0.2s;
-            border: 3px solid #ffa0a0;
-            box-shadow: 0 0 30px red;
-        }
-        .purchase-cta .btn:hover {
-            background: #ff3535;
+            filter: brightness(1.1) saturate(1.5);
             transform: scale(1.05);
-            border-color: white;
         }
 
         /* footer */
-        .footer {
-            background: #0c0000;
-            border-top: 2px solid #a22;
-            padding: 2.5rem 0;
+        footer {
+            background: #050000;
             text-align: center;
-            color: #b78d8d;
+            padding: 40px 20px;
+            border-top: 5px solid #a00;
+            color: #b77;
+            font-size: 1.2rem;
         }
-        .footer i {
-            color: #e63939;
-        }
-
-        /* responsive */
-        @media (max-width: 1000px) {
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            .hero-overlay h2 { font-size: 4rem; }
-        }
-        @media (max-width: 700px) {
-            .header-content { flex-direction: column; gap: 1rem; }
-            .nav-links { gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
-            .gallery-grid { grid-template-columns: 1fr; }
-            .hero-overlay h2 { font-size: 2.8rem; letter-spacing: 6px; }
-        }
-
-        /* extra red elements */
-        .btn-mini {
-            background: #a10000;
-            border: 1px solid red;
-            border-radius: 40px;
-            padding: 0.5rem 1.8rem;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
+        .footer-icons i {
+            color: #d42e2e;
+            font-size: 2rem;
+            margin: 20px 10px 0;
             transition: 0.2s;
         }
-        .btn-mini:hover {
-            background: red;
-            box-shadow: 0 0 20px red;
+        .footer-icons i:hover {
+            color: white;
+            text-shadow: 0 0 30px red;
+            transform: scale(1.2);
+        }
+
+        /* responsiveness */
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            .rules-preview ul {
+                columns: 1;
+            }
         }
     </style>
 </head>
 <body>
 
-<header class="header">
-    <div class="container header-content">
-        <div class="logo">
-            <h1>GLORIA</h1>
-            <span>✦ RED & BLACK RP ✦</span>
-        </div>
-        <nav class="nav-links">
-            <a href="#home">HOME</a>
-            <a href="#rules">RULES</a>
+    <!-- STICKY NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">GLORIA <span>roleplay</span></div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#info">Server</a>
+            <a href="#rules">Rules</a>
             <a href="#vip">VIP</a>
-            <a href="#gallery">GALLERY</a>
-            <a href="#purchase">BUY</a>
-        </nav>
-    </div>
-</header>
-
-<main>
-    <!-- hero (home) -->
-    <div id="home" class="container hero">
-        <div class="hero-image">
-            <div class="hero-overlay">
-                <h2>GLORIA RP</h2>
-                <p>live your crime story · red & black</p>
-            </div>
+            <a href="#gallery">Gallery</a>
         </div>
-    </div>
+    </nav>
 
-    <!-- rules section -->
-    <section id="rules" class="container">
-        <h2 class="section-title">⚔️ SERVER RULES</h2>
-        <div class="cards-grid">
-            <div class="rule-card">
-                <div class="rule-icon"><i class="fas fa-skull"></i></div>
-                <h3>No RDM / VDM</h3>
-                <p>Random deathmatch and vehicle deathmatch strictly forbidden. Always have a proper roleplay reason.</p>
+    <!-- HERO SECTION (home) -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>GLORIA</h1>
+            <p>where crimson nights meet endless stories</p>
+            <a href="#vip" class="btn-gloria"><i class="fas fa-crown" style="margin-right: 10px;"></i>BECOME LEGEND</a>
+        </div>
+    </section>
+
+    <!-- INFO / ABOUT SERVER -->
+    <section id="info" class="section">
+        <h2 class="section-title">✦ THE SERVER ✦</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Serious RP</h3>
+                <p>Immerse yourself in a rich, story-driven world with strict RP rules. Your actions shape the city.</p>
             </div>
-            <div class="rule-card">
-                <div class="rule-icon"><i class="fas fa-handcuffs"></i></div>
-                <h3>Fear RP</h3>
-                <p>Value your life. If a gun is pointed at you, comply — don't be a hero without backup.</p>
+            <div class="info-card">
+                <i class="fas fa-city"></i>
+                <h3>Massive map</h3>
+                <p>Custom-built Los Santos with 100+ interiors, hidden gangs, and dynamic events every weekend.</p>
             </div>
-            <div class="rule-card">
-                <div class="rule-icon"><i class="fas fa-users"></i></div>
-                <h3>Respect everyone</h3>
-                <p>No toxic behaviour, hate speech, or harassment. Gloria is a classy underground.</p>
+            <div class="info-card">
+                <i class="fas fa-users"></i>
+                <h3>Active staff</h3>
+                <p>Professional team online 24/7 to ensure fair play and amazing RP scenarios.</p>
             </div>
-            <div class="rule-card">
-                <div class="rule-icon"><i class="fas fa-car-crash"></i></div>
-                <h3>Realistic driving</h3>
-                <p>Keep driving believable. No insane stunts unless your character is a professional stuntman.</p>
+            <div class="info-card">
+                <i class="fas fa-gamepad"></i>
+                <h3>Unique scripts</h3>
+                <p>From heists to housing — our exclusive red&black coded systems bring the heat.</p>
             </div>
         </div>
     </section>
 
-    <!-- VIP offers -->
-    <section id="vip" class="container">
-        <h2 class="section-title">💎 VIP PURCHASE OFFERS</h2>
-        <div class="cards-grid">
-            <!-- VIP BRONZE -->
+    <!-- RULES (preview + modal) -->
+    <section id="rules" class="section" style="background: #0a0000;">
+        <h2 class="section-title">⚡ RULES ⚡</h2>
+        <div class="rules-preview">
+            <ul>
+                <li><i class="fas fa-skull-crossbones"></i> No FailRP / Powergaming</li>
+                <li><i class="fas fa-hand-fist"></i> Respect the staff decisions</li>
+                <li><i class="fas fa-car"></i> Realistic driving & combat</li>
+                <li><i class="fas fa-people-group"></i> No toxic behavior</li>
+                <li><i class="fas fa-money-bill"></i> Corruption is allowed, metagaming isn't</li>
+                <li><i class="fas fa-gun"></i> Strict fear RP & value of life</li>
+            </ul>
+            <button class="open-rules-btn" id="showRulesBtn"><i class="fas fa-book-open"></i> READ FULL RULES</button>
+        </div>
+    </section>
+
+    <!-- MODAL (full rules) -->
+    <div id="rulesModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>📜 GLORIA RULES</h2>
+            <ul>
+                <li><strong>1. Respect</strong> — All players must be treated with respect. Zero toxicity.</li>
+                <li><strong>2. Roleplay first</strong> — Stay in character at all times. No Random Deathmatch.</li>
+                <li><strong>3. Value of Life</strong> — If a gun is pointed at you, you must cooperate.</li>
+                <li><strong>4. No Metagaming</strong> — Don't use out-of-character info in character.</li>
+                <li><strong>5. Realistic driving</strong> — No unrealistic stunts or cars in the air.</li>
+                <li><strong>6. New Life Rule</strong> — If you are downed and revived, you don't remember last 15min.</li>
+                <li><strong>7. Staff authority</strong> — Their word is final. Disputes after the session.</li>
+                <li><strong>8. Gangs & Turfs</strong> — Maximum 10 members per gang, war rules apply.</li>
+                <li><strong>9. Economy</strong> — No real money trading, only server donations (VIP).</li>
+                <li><strong>10. Have fun!</strong> — But always keep the RP quality high.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- VIP SHOP -->
+    <section id="vip" class="section">
+        <h2 class="section-title">🔥 VIP OFFERS 🔥</h2>
+        <div class="vip-grid">
+            <!-- bronze vip -->
             <div class="vip-card">
-                <div class="vip-icon"><i class="fas fa-crown" style="color: #cd7f32;"></i></div>
-                <h3>BRONZE VIP</h3>
-                <div class="price">€9.99 / month</div>
-                <ul class="vip-feature-list">
-                    <li><i class="fas fa-check-circle"></i> Exclusive red car skin</li>
-                    <li><i class="fas fa-check-circle"></i> /vip chat access</li>
-                    <li><i class="fas fa-check-circle"></i> 2 extra character slots</li>
-                    <li><i class="fas fa-check-circle"></i> priority queue</li>
+                <i class="fas fa-star" style="font-size: 3rem; color: #cd7f32;"></i>
+                <h3>BRONZE</h3>
+                <div class="vip-price">$9.99</div>
+                <ul class="vip-features">
+                    <li><i class="fas fa-check"></i> Exclusive red tag</li>
+                    <li><i class="fas fa-check"></i> /vip garage (2 cars)</li>
+                    <li><i class="fas fa-check"></i> Daily $5,000 bonus</li>
+                    <li><i class="fas fa-check"></i> VIP chat access</li>
                 </ul>
-                <button class="btn-mini" style="margin-top: 1.5rem;">choose offer</button>
+                <button class="buy-btn">PURCHASE</button>
             </div>
-            <!-- VIP SILVER (recommended) -->
-            <div class="vip-card" style="border: 2px solid #e63946; background: radial-gradient(circle at 20% 30%, #461111, #130101);">
-                <div class="vip-icon"><i class="fas fa-gem" style="color: #c0c0c0;"></i></div>
-                <h3>SILVER VIP <span style="color:#ff8080; font-size: 1rem;">MOST POPULAR</span></h3>
-                <div class="price">€24.99 / month</div>
-                <ul class="vip-feature-list">
-                    <li><i class="fas fa-check-circle"></i> All bronze perks</li>
-                    <li><i class="fas fa-check-circle"></i> Black & red penthouse key</li>
-                    <li><i class="fas fa-check-circle"></i> Weekly 50k in-game cash</li>
-                    <li><i class="fas fa-check-circle"></i> Custom number plate</li>
-                    <li><i class="fas fa-check-circle"></i> Access to VIP lounge</li>
+            <!-- SILVER vip (popular) -->
+            <div class="vip-card popular">
+                <i class="fas fa-gem" style="font-size: 3rem; color: #c0c0c0;"></i>
+                <h3>SILVER</h3>
+                <div class="vip-price">$24.99</div>
+                <ul class="vip-features">
+                    <li><i class="fas fa-check"></i> All bronze perks</li>
+                    <li><i class="fas fa-check"></i> /vip garage (5 cars)</li>
+                    <li><i class="fas fa-check"></i> Weekly $25,000 bonus</li>
+                    <li><i class="fas fa-check"></i> Custom number plate</li>
+                    <li><i class="fas fa-check"></i> Access to VIP lounge</li>
                 </ul>
-                <button class="btn-mini" style="margin-top: 1.5rem; background:#b30000;">select silver</button>
+                <button class="buy-btn">PURCHASE</button>
             </div>
-            <!-- VIP GOLD -->
+            <!-- GOLD vip -->
             <div class="vip-card">
-                <div class="vip-icon"><i class="fas fa-star" style="color: gold;"></i></div>
-                <h3>GOLD VIP</h3>
-                <div class="price">€49.99 / month</div>
-                <ul class="vip-feature-list">
-                    <li><i class="fas fa-check-circle"></i> All silver perks</li>
-                    <li><i class="fas fa-check-circle"></i> Ownable mansion in hills</li>
-                    <li><i class="fas fa-check-circle"></i> Custom weapon skin (red tint)</li>
-                    <li><i class="fas fa-check-circle"></i> 3 extra garages</li>
-                    <li><i class="fas fa-check-circle"></i> Monthly 200k & gold necklace</li>
+                <i class="fas fa-crown" style="font-size: 3rem; color: gold;"></i>
+                <h3>GOLD</h3>
+                <div class="vip-price">$49.99</div>
+                <ul class="vip-features">
+                    <li><i class="fas fa-check"></i> All silver perks</li>
+                    <li><i class="fas fa-check"></i> +10 property slots</li>
+                    <li><i class="fas fa-check"></i> Monthly $100,000 bonus</li>
+                    <li><i class="fas fa-check"></i> Custom badge & gun skin</li>
+                    <li><i class="fas fa-check"></i> Priority support</li>
                 </ul>
-                <button class="btn-mini" style="margin-top: 1.5rem;">go gold</button>
+                <button class="buy-btn">PURCHASE</button>
             </div>
         </div>
     </section>
 
-    <!-- image gallery -->
-    <section id="gallery" class="container">
-        <h2 class="section-title">📸 GLORIA GALLERY</h2>
+    <!-- GALLERY (server images) -->
+    <section id="gallery" class="section" style="background: #0a0101;">
+        <h2 class="section-title">📸 GALLERY</h2>
         <div class="gallery-grid">
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1604866830893-c13caea5155c?q=80&w=1974&auto=format&fit=crop" alt="city rp夜景"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1560762484-813fc97650a0?q=80&w=1974&auto=format&fit=crop" alt="car meet black red"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1611022326096-891be3a94c7b?q=80&w=1964&auto=format&fit=crop" alt="characters roleplay"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1500051638674-ff996a0ec29e?q=80&w=2071&auto=format&fit=crop" alt="neon nights"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=1964&auto=format&fit=crop" alt="red muscle car"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1547234935-80c7145ec969?q=80&w=1974&auto=format&fit=crop" alt="gang rp"></div>
-            <!-- adding 2 extra for richness, but grid will adapt -->
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600965962361-9035fbfd1c50?q=80&w=2070&auto=format&fit=crop" alt="red interior"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1605548306639-1f2360e6e4bf?q=80&w=1935&auto=format&fit=crop" alt="bike rp"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1612178991541-b48cc8e92a4d?q=80&w=1974&auto=format&fit=crop" alt="mafia style"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/id/1043/500/300" alt="roleplay city 1"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/id/106/500/300" alt="roleplay street"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/id/136/500/300" alt="car meet"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/id/20/500/300" alt="interior rp"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/id/13/500/300" alt="night club"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/id/16/500/300" alt="police chase"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/id/43/500/300" alt="mafia meeting"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/id/57/500/300" alt="helicopter view"></div>
         </div>
+        <p style="text-align: center; margin-top: 40px; color: #b88;"><i class="fas fa-camera"></i> real in-game shots — Gloria RolePlay</p>
     </section>
 
-    <!-- big purchase call (VIP purchase) -->
-    <section id="purchase" class="container purchase-cta">
-        <h3>🔥 UNLOCK THE REAL POWER</h3>
-        <p style="font-size: 1.5rem; margin: 1rem 0; color: #f0b2b2;">choose your VIP & dominate the streets of GLORIA</p>
-        <button class="btn" onclick="alert('✨ VIP store – demo redirect. Thanks for your interest!')">PURCHASE NOW</button>
-        <p style="margin-top: 2rem;"><i class="fas fa-shield-alt" style="color: red;"></i> secure payment · instant activation</p>
-    </section>
-</main>
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2025 GLORIA RolePlay. All rights reserved. Blood, sweat & pixels.</p>
+        <div class="footer-icons">
+            <i class="fab fa-discord"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-teamspeak"></i>
+            <i class="fas fa-envelope"></i>
+        </div>
+        <p style="margin-top: 20px; font-size: 1rem;">#1 Red & Black RP experience</p>
+    </footer>
 
-<footer class="footer">
-    <div class="container">
-        <p><i class="fas fa-copyright"></i> 2025 GLORIA ROLEPLAY. All rights reserved. <br> red & black passion · since 2020</p>
-        <p style="margin-top: 1rem; color: #a55;">
-            <i class="fab fa-discord"></i> discord.gg/gloria-rp &nbsp;&nbsp; 
-            <i class="fab fa-instagram"></i> @gloria.rp
-        </p>
-    </div>
-</footer>
+    <!-- JAVASCRIPT (modal + interactions) -->
+    <script>
+        (function() {
+            // modal functionality
+            const modal = document.getElementById('rulesModal');
+            const openBtn = document.getElementById('showRulesBtn');
+            const closeSpan = document.querySelector('.close-modal');
 
-<!-- simple JS for interactivity (smooth, dynamic class, etc) -->
-<script>
-    (function() {
-        // add a bit of dynamic red glow to active nav link
-        const sections = document.querySelectorAll("section");
-        const navLinks = document.querySelectorAll(".nav-links a");
-
-        function changeActiveNav() {
-            let index = sections.length;
-            while(--index && window.scrollY + 100 < sections[index].offsetTop) {}
-            navLinks.forEach((link) => {
-                link.style.color = "#fad7d7";
-                link.style.borderBottomColor = "transparent";
-                link.style.textShadow = "none";
-            });
-            if(index >= 0 && navLinks[index]) {
-                navLinks[index].style.color = "#ffffff";
-                navLinks[index].style.borderBottomColor = "var(--gloria-red)";
-                navLinks[index].style.textShadow = "0 0 8px red";
+            function openModal() {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
             }
-        }
-        // minor throttle
-        window.addEventListener("scroll", () => {
-            requestAnimationFrame(changeActiveNav);
-        });
-        window.addEventListener("load", changeActiveNav);
+            function closeModal() {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
 
-        // extra hover on purchase button
-        const buyBtn = document.querySelector('.purchase-cta .btn');
-        if(buyBtn) {
-            buyBtn.addEventListener('mouseenter', () => {
-                buyBtn.style.boxShadow = '0 0 60px red';
+            openBtn.addEventListener('click', openModal);
+            closeSpan.addEventListener('click', closeModal);
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
             });
-            buyBtn.addEventListener('mouseleave', () => {
-                buyBtn.style.boxShadow = '0 0 30px red';
-            });
-        }
 
-        // for gallery img alt but not necessary
-        console.log("GLORIA red & black RP website — ready");
-    })();
-</script>
-<!-- small style for active link dynamic, ensure consistency -->
-<style>
-    .nav-links a.active {
-        color: white;
-        border-bottom: 2px solid var(--gloria-red);
-        text-shadow: 0 0 8px red;
-    }
-</style>
+            // smooth scroll for nav links (optional)
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetEl = document.getElementById(targetId);
+                    if (targetEl) {
+                        targetEl.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // simple "buy" button messages (cosmetic)
+            document.querySelectorAll('.buy-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    alert('[TEST] This would redirect to secure payment. Gloria RolePlay — thank you for your interest!');
+                });
+            });
+        })();
+    </script>
+    <!-- note: images are from picsum (free placeholders) — replace with actual server screens -->
 </body>
 </html>
