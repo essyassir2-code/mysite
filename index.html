@@ -1,207 +1,537 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>GLORIA RP</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLORIA · red & black roleplay</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial;
-    background: #0a0000;
-    color: white;
-}
+        body {
+            background-color: #0b0000;
+            color: #f0e6e6;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
 
-/* Navbar */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background: black;
-    border-bottom: 2px solid red;
-}
+        /* custom red/black theme */
+        :root {
+            --gloria-red: #e11b1b;
+            --gloria-red-dark: #a01010;
+            --gloria-black: #0a0000;
+            --gloria-soft-black: #1a0808;
+            --gloria-accent: #ff4d4d;
+            --gloria-glow: rgba(225, 27, 27, 0.6);
+            --gloria-text: #f0d6d6;
+        }
 
-.logo {
-    color: red;
-    font-weight: bold;
-    font-size: 24px;
-}
+        /* smooth scroll & selection */
+        html {
+            scroll-behavior: smooth;
+        }
+        ::selection {
+            background: var(--gloria-red);
+            color: #000;
+        }
 
-.nav a {
-    color: white;
-    margin: 0 10px;
-    text-decoration: none;
-}
+        /* ---- layout ---- */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-/* Hero */
-.hero {
-    text-align: center;
-    padding: 100px 20px;
-}
+        /* header – black & red gradient */
+        .header {
+            background: linear-gradient(145deg, #130101 0%, #2b0404 80%);
+            border-bottom: 3px solid var(--gloria-red);
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(4px);
+        }
 
-.hero h1 {
-    font-size: 50px;
-    color: red;
-}
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 0;
+        }
 
-/* Button */
-.btn {
-    padding: 15px 40px;
-    background: red;
-    border-radius: 50px;
-    border: none;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    box-shadow: 0 0 20px red;
-    transition: 0.3s;
-}
+        .logo h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #ffb3b3, #ff1a1a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px var(--gloria-glow);
+            margin-left: 0.5rem;
+        }
+        .logo span {
+            font-size: 1rem;
+            color: #cc9c9c;
+            letter-spacing: 4px;
+            display: block;
+            line-height: 1;
+        }
 
-.btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 50px red;
-}
+        .nav-links {
+            display: flex;
+            gap: 2.8rem;
+        }
+        .nav-links a {
+            color: #fad7d7;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: 0.3s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+        }
+        .nav-links a:hover {
+            color: white;
+            border-bottom-color: var(--gloria-red);
+            text-shadow: 0 0 8px red;
+        }
 
-/* Gallery */
-.gallery {
-    padding: 40px;
-    text-align: center;
-}
+        /* hero section with stunning image */
+        .hero {
+            margin: 2rem 0 3rem;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 25px 40px -8px #300000;
+            border: 1px solid #6b1a1a;
+            background: #1a0303;
+        }
+        .hero-image {
+            background-image: linear-gradient(127deg, rgba(0,0,0,0.7) 0%, rgba(100,0,0,0.3) 100%), 
+            url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop'); 
+            /* cyberpunk gaming ambience – dark with red/neon fits rp */
+            background-size: cover;
+            background-position: center 30%;
+            height: 70vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        .hero-overlay h2 {
+            font-size: 5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: white;
+            text-shadow: 0 0 20px red, 0 0 40px #b30000;
+            letter-spacing: 12px;
+        }
+        .hero-overlay p {
+            font-size: 1.7rem;
+            color: #ffcbcb;
+            background: rgba(20, 0, 0, 0.6);
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            backdrop-filter: blur(3px);
+            border: 1px solid var(--gloria-red);
+            display: inline-block;
+            margin-top: 1rem;
+        }
 
-.images {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-}
+        /* sections general */
+        section {
+            margin: 6rem 0;
+        }
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-left: 10px solid var(--gloria-red);
+            padding-left: 2rem;
+            margin-bottom: 3rem;
+            letter-spacing: 3px;
+            color: #ffe2e2;
+            text-shadow: 0 0 5px #ff4d4d;
+        }
 
-.images img {
-    width: 250px;
-    border-radius: 15px;
-    border: 2px solid red;
-    transition: 0.3s;
-}
+        /* cards rules / vip */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
 
-.images img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 30px red;
-}
+        .rule-card, .vip-card {
+            background: radial-gradient(circle at 20% 30%, #2f0a0a, #0f0101);
+            border: 1px solid #8b1a1a;
+            border-radius: 40px;
+            padding: 2.2rem 1.8rem;
+            transition: transform 0.25s, box-shadow 0.4s;
+            box-shadow: 0 15px 25px -10px #1f0000;
+            backdrop-filter: blur(2px);
+        }
+        .rule-card:hover, .vip-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--gloria-red);
+            box-shadow: 0 25px 35px -8px #e60000;
+        }
 
-/* Cards */
-.cards {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 50px;
-}
+        .rule-icon, .vip-icon {
+            font-size: 3.5rem;
+            color: var(--gloria-red);
+            margin-bottom: 1.2rem;
+            text-shadow: 0 0 18px red;
+        }
 
-.card {
-    background: #1a0000;
-    padding: 20px;
-    border-radius: 20px;
-    border: 2px solid red;
-    text-align: center;
-    width: 220px;
-    box-shadow: 0 0 20px red;
-    transition: 0.3s;
-}
+        .rule-card h3, .vip-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffbebe;
+        }
 
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 50px red;
-}
+        .rule-card p, .vip-card p {
+            color: #dbb2b2;
+            font-size: 1.1rem;
+        }
 
-.card h2 {
-    color: red;
-}
+        .vip-card .price {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: white;
+            background: #a80000;
+            display: inline-block;
+            padding: 0.3rem 1.5rem;
+            border-radius: 40px;
+            margin: 1.2rem 0 1rem;
+            border: 2px solid #ff8080;
+            letter-spacing: 2px;
+        }
+        .vip-feature-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        .vip-feature-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #6b2a2a;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .vip-feature-list i {
+            color: var(--gloria-red);
+            width: 1.8rem;
+            text-align: center;
+        }
 
-/* Popup */
-.popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #1a0000;
-    padding: 20px;
-    border-radius: 20px;
-    border: 2px solid red;
-    box-shadow: 0 0 40px red;
-    width: 300px;
-}
+        /* gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+        .gallery-item {
+            border-radius: 30px;
+            overflow: hidden;
+            border: 3px solid #3d0303;
+            transition: 0.4s ease;
+            aspect-ratio: 16 / 9;
+            box-shadow: 0 20px 30px #1e0101;
+        }
+        .gallery-item:hover {
+            border-color: var(--gloria-red);
+            transform: scale(1.02);
+            box-shadow: 0 0 30px #f00;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: 0.3s;
+            filter: brightness(0.9);
+        }
+        .gallery-item:hover img {
+            filter: brightness(1.1) saturate(1.2);
+        }
 
-.popup button {
-    margin-top: 10px;
-}
+        /* CTA / purchase highlight */
+        .purchase-cta {
+            background: linear-gradient(130deg, #1e0101, #390505);
+            border-radius: 80px;
+            padding: 4rem 3rem;
+            border: 2px solid #b32222;
+            text-align: center;
+            margin: 5rem 0;
+            box-shadow: inset 0 0 30px #2f0000, 0 25px 40px black;
+        }
+        .purchase-cta h3 {
+            font-size: 3rem;
+            color: white;
+            text-transform: uppercase;
+            font-weight: 800;
+            text-shadow: 0 0 20px #ff5e5e;
+        }
+        .purchase-cta .btn {
+            background: #b11c1c;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            padding: 1.2rem 3.8rem;
+            margin-top: 2rem;
+            border-radius: 70px;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 3px solid #ffa0a0;
+            box-shadow: 0 0 30px red;
+        }
+        .purchase-cta .btn:hover {
+            background: #ff3535;
+            transform: scale(1.05);
+            border-color: white;
+        }
 
-</style>
+        /* footer */
+        .footer {
+            background: #0c0000;
+            border-top: 2px solid #a22;
+            padding: 2.5rem 0;
+            text-align: center;
+            color: #b78d8d;
+        }
+        .footer i {
+            color: #e63939;
+        }
+
+        /* responsive */
+        @media (max-width: 1000px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-overlay h2 { font-size: 4rem; }
+        }
+        @media (max-width: 700px) {
+            .header-content { flex-direction: column; gap: 1rem; }
+            .nav-links { gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .hero-overlay h2 { font-size: 2.8rem; letter-spacing: 6px; }
+        }
+
+        /* extra red elements */
+        .btn-mini {
+            background: #a10000;
+            border: 1px solid red;
+            border-radius: 40px;
+            padding: 0.5rem 1.8rem;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-mini:hover {
+            background: red;
+            box-shadow: 0 0 20px red;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="navbar">
-    <div class="logo">GLORIA RP</div>
-    <div class="nav">
-        <a href="#">Home</a>
-        <a href="#">Server</a>
-        <a href="#" onclick="openPopup()">Rules</a>
-        <a href="#">VIP</a>
-        <a href="#">Gallery</a>
+<header class="header">
+    <div class="container header-content">
+        <div class="logo">
+            <h1>GLORIA</h1>
+            <span>✦ RED & BLACK RP ✦</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#home">HOME</a>
+            <a href="#rules">RULES</a>
+            <a href="#vip">VIP</a>
+            <a href="#gallery">GALLERY</a>
+            <a href="#purchase">BUY</a>
+        </nav>
     </div>
-</div>
+</header>
 
-<div class="hero">
-    <h1>🔥 GLORIA ROLEPLAY</h1>
-    <p>Where legends are made</p>
-    <button class="btn">Become Legend</button>
-</div>
-
-<div class="gallery">
-    <h2>📷 Gallery</h2>
-    <div class="images">
-        <img src="https://picsum.photos/300">
-        <img src="https://picsum.photos/301">
-        <img src="https://picsum.photos/302">
-    </div>
-</div>
-
-<div class="cards">
-    <div class="card">
-        <h2>$9.99</h2>
-        <p>Basic VIP</p>
-        <button class="btn">Purchase</button>
+<main>
+    <!-- hero (home) -->
+    <div id="home" class="container hero">
+        <div class="hero-image">
+            <div class="hero-overlay">
+                <h2>GLORIA RP</h2>
+                <p>live your crime story · red & black</p>
+            </div>
+        </div>
     </div>
 
-    <div class="card">
-        <h2>$24.99</h2>
-        <p>Pro VIP</p>
-        <button class="btn">Purchase</button>
+    <!-- rules section -->
+    <section id="rules" class="container">
+        <h2 class="section-title">⚔️ SERVER RULES</h2>
+        <div class="cards-grid">
+            <div class="rule-card">
+                <div class="rule-icon"><i class="fas fa-skull"></i></div>
+                <h3>No RDM / VDM</h3>
+                <p>Random deathmatch and vehicle deathmatch strictly forbidden. Always have a proper roleplay reason.</p>
+            </div>
+            <div class="rule-card">
+                <div class="rule-icon"><i class="fas fa-handcuffs"></i></div>
+                <h3>Fear RP</h3>
+                <p>Value your life. If a gun is pointed at you, comply — don't be a hero without backup.</p>
+            </div>
+            <div class="rule-card">
+                <div class="rule-icon"><i class="fas fa-users"></i></div>
+                <h3>Respect everyone</h3>
+                <p>No toxic behaviour, hate speech, or harassment. Gloria is a classy underground.</p>
+            </div>
+            <div class="rule-card">
+                <div class="rule-icon"><i class="fas fa-car-crash"></i></div>
+                <h3>Realistic driving</h3>
+                <p>Keep driving believable. No insane stunts unless your character is a professional stuntman.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIP offers -->
+    <section id="vip" class="container">
+        <h2 class="section-title">💎 VIP PURCHASE OFFERS</h2>
+        <div class="cards-grid">
+            <!-- VIP BRONZE -->
+            <div class="vip-card">
+                <div class="vip-icon"><i class="fas fa-crown" style="color: #cd7f32;"></i></div>
+                <h3>BRONZE VIP</h3>
+                <div class="price">€9.99 / month</div>
+                <ul class="vip-feature-list">
+                    <li><i class="fas fa-check-circle"></i> Exclusive red car skin</li>
+                    <li><i class="fas fa-check-circle"></i> /vip chat access</li>
+                    <li><i class="fas fa-check-circle"></i> 2 extra character slots</li>
+                    <li><i class="fas fa-check-circle"></i> priority queue</li>
+                </ul>
+                <button class="btn-mini" style="margin-top: 1.5rem;">choose offer</button>
+            </div>
+            <!-- VIP SILVER (recommended) -->
+            <div class="vip-card" style="border: 2px solid #e63946; background: radial-gradient(circle at 20% 30%, #461111, #130101);">
+                <div class="vip-icon"><i class="fas fa-gem" style="color: #c0c0c0;"></i></div>
+                <h3>SILVER VIP <span style="color:#ff8080; font-size: 1rem;">MOST POPULAR</span></h3>
+                <div class="price">€24.99 / month</div>
+                <ul class="vip-feature-list">
+                    <li><i class="fas fa-check-circle"></i> All bronze perks</li>
+                    <li><i class="fas fa-check-circle"></i> Black & red penthouse key</li>
+                    <li><i class="fas fa-check-circle"></i> Weekly 50k in-game cash</li>
+                    <li><i class="fas fa-check-circle"></i> Custom number plate</li>
+                    <li><i class="fas fa-check-circle"></i> Access to VIP lounge</li>
+                </ul>
+                <button class="btn-mini" style="margin-top: 1.5rem; background:#b30000;">select silver</button>
+            </div>
+            <!-- VIP GOLD -->
+            <div class="vip-card">
+                <div class="vip-icon"><i class="fas fa-star" style="color: gold;"></i></div>
+                <h3>GOLD VIP</h3>
+                <div class="price">€49.99 / month</div>
+                <ul class="vip-feature-list">
+                    <li><i class="fas fa-check-circle"></i> All silver perks</li>
+                    <li><i class="fas fa-check-circle"></i> Ownable mansion in hills</li>
+                    <li><i class="fas fa-check-circle"></i> Custom weapon skin (red tint)</li>
+                    <li><i class="fas fa-check-circle"></i> 3 extra garages</li>
+                    <li><i class="fas fa-check-circle"></i> Monthly 200k & gold necklace</li>
+                </ul>
+                <button class="btn-mini" style="margin-top: 1.5rem;">go gold</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- image gallery -->
+    <section id="gallery" class="container">
+        <h2 class="section-title">📸 GLORIA GALLERY</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1604866830893-c13caea5155c?q=80&w=1974&auto=format&fit=crop" alt="city rp夜景"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1560762484-813fc97650a0?q=80&w=1974&auto=format&fit=crop" alt="car meet black red"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1611022326096-891be3a94c7b?q=80&w=1964&auto=format&fit=crop" alt="characters roleplay"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1500051638674-ff996a0ec29e?q=80&w=2071&auto=format&fit=crop" alt="neon nights"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=1964&auto=format&fit=crop" alt="red muscle car"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1547234935-80c7145ec969?q=80&w=1974&auto=format&fit=crop" alt="gang rp"></div>
+            <!-- adding 2 extra for richness, but grid will adapt -->
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600965962361-9035fbfd1c50?q=80&w=2070&auto=format&fit=crop" alt="red interior"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1605548306639-1f2360e6e4bf?q=80&w=1935&auto=format&fit=crop" alt="bike rp"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1612178991541-b48cc8e92a4d?q=80&w=1974&auto=format&fit=crop" alt="mafia style"></div>
+        </div>
+    </section>
+
+    <!-- big purchase call (VIP purchase) -->
+    <section id="purchase" class="container purchase-cta">
+        <h3>🔥 UNLOCK THE REAL POWER</h3>
+        <p style="font-size: 1.5rem; margin: 1rem 0; color: #f0b2b2;">choose your VIP & dominate the streets of GLORIA</p>
+        <button class="btn" onclick="alert('✨ VIP store – demo redirect. Thanks for your interest!')">PURCHASE NOW</button>
+        <p style="margin-top: 2rem;"><i class="fas fa-shield-alt" style="color: red;"></i> secure payment · instant activation</p>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p><i class="fas fa-copyright"></i> 2025 GLORIA ROLEPLAY. All rights reserved. <br> red & black passion · since 2020</p>
+        <p style="margin-top: 1rem; color: #a55;">
+            <i class="fab fa-discord"></i> discord.gg/gloria-rp &nbsp;&nbsp; 
+            <i class="fab fa-instagram"></i> @gloria.rp
+        </p>
     </div>
+</footer>
 
-    <div class="card">
-        <h2>$49.99</h2>
-        <p>Legend VIP</p>
-        <button class="btn">Purchase</button>
-    </div>
-</div>
-
-<!-- Popup Rules -->
-<div id="popup" class="popup">
-    <h2>📜 Rules</h2>
-    <p>1. Respect all players</p>
-    <p>2. No cheating</p>
-    <p>3. Roleplay seriously</p>
-    <button class="btn" onclick="closePopup()">Close</button>
-</div>
-
+<!-- simple JS for interactivity (smooth, dynamic class, etc) -->
 <script>
-function openPopup() {
-    document.getElementById("popup").style.display = "block";
-}
+    (function() {
+        // add a bit of dynamic red glow to active nav link
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-links a");
 
-function closePopup() {
-    document.getElementById("popup").style.display = "none";
-}
+        function changeActiveNav() {
+            let index = sections.length;
+            while(--index && window.scrollY + 100 < sections[index].offsetTop) {}
+            navLinks.forEach((link) => {
+                link.style.color = "#fad7d7";
+                link.style.borderBottomColor = "transparent";
+                link.style.textShadow = "none";
+            });
+            if(index >= 0 && navLinks[index]) {
+                navLinks[index].style.color = "#ffffff";
+                navLinks[index].style.borderBottomColor = "var(--gloria-red)";
+                navLinks[index].style.textShadow = "0 0 8px red";
+            }
+        }
+        // minor throttle
+        window.addEventListener("scroll", () => {
+            requestAnimationFrame(changeActiveNav);
+        });
+        window.addEventListener("load", changeActiveNav);
+
+        // extra hover on purchase button
+        const buyBtn = document.querySelector('.purchase-cta .btn');
+        if(buyBtn) {
+            buyBtn.addEventListener('mouseenter', () => {
+                buyBtn.style.boxShadow = '0 0 60px red';
+            });
+            buyBtn.addEventListener('mouseleave', () => {
+                buyBtn.style.boxShadow = '0 0 30px red';
+            });
+        }
+
+        // for gallery img alt but not necessary
+        console.log("GLORIA red & black RP website — ready");
+    })();
 </script>
-
+<!-- small style for active link dynamic, ensure consistency -->
+<style>
+    .nav-links a.active {
+        color: white;
+        border-bottom: 2px solid var(--gloria-red);
+        text-shadow: 0 0 8px red;
+    }
+</style>
 </body>
 </html>
